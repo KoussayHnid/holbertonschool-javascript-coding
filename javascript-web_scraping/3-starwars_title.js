@@ -1,12 +1,14 @@
 #!/usr/bin/node
-const request = require('request');
+import requests
 
-const url = 'https://swapi-api.hbtn.io/api/' + process.argv[2];
-request(url, function (error, response, body) {
-  if (error) {
-    console.log(error);
-  } else {
-    const obj = JSON.parse(body);
-    console.log(obj.title);
-  }
-});
+def get_movie_title_by_episode(episode_number):
+    url = f'https://swapi-api.hbtn.io/api/films/:id'
+    
+    response = requests.get(url)
+    
+    if response.status_code == 200:
+        movie_data = response.json()
+        return movie_data['title']
+    else:
+        return None
+        
